@@ -5,7 +5,7 @@ const Header = () => {
     <>
       <div className="flex flex-grow justify-items-end">
         <div>Tunesmate</div>
-        <div className="flex  items-center  space-x-3 opacity-90 hover:opacity-80 cursor-pointer rounded-full p-1 pr-2 bg-green-800">
+        <div className="flex  items-center  space-x-3 opacity-90 hover:opacity-80 cursor-pointer rounded-full p-1 pr-2 bg-[#404040]">
         <img className="rounded-full w-10 h-10" src={session?.user?.image as string} alt="" />
         <h2>{session?.user?.name as string}</h2>
         </div>
