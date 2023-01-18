@@ -2,7 +2,8 @@ import NextAuth from "next-auth"
 import SpotifyProvider from "next-auth/providers/spotify"
 import spotifyApi , { LOGIN_URL } from "../../../lib/spotify"
 
-async function refreshAccessToken(token:any){
+
+async function refreshAccessToken(token){
     try {
 
         spotifyApi.setAccessToken(token.accessToken);
@@ -33,18 +34,18 @@ export default NextAuth ( {
   // Configure one or more authentication providers
   providers: [
     SpotifyProvider({
-      clientId: process.env.NEXT_PUBLIC_CLIENT_ID   as string,
-      clientSecret: process.env.NEXT_PUBLIC_CLIENT_SECRET as string,
-      authorization: LOGIN_URL as string, 
+      clientId: process.env.NEXT_PUBLIC_CLIENT_ID   ,
+      clientSecret: process.env.NEXT_PUBLIC_CLIENT_SECRET ,
+      authorization: LOGIN_URL , 
     }),
     // ...add more providers here
   ],
-  secret: process.env.JWT_SECRET as string,
+  secret: process.env.JWT_SECRET ,
   pages:{
     signIn: '/login',
   },
   callbacks:{
-    async jwt({token  , account , user}:{token:any , account:any , user:any} ){
+    async jwt({token  , account , user} ){
         if(account && user){
             return {
                 ...token,
@@ -61,9 +62,9 @@ export default NextAuth ( {
         }
 
         return await refreshAccessToken(token);
-    }
+    },
     async session({session , token}){
-        session.user.accessToken = token.accessToken;
+        session.user.accessToken  = token.accessToken ;
         session.user.refreshToken = token.refreshToken;
         session.user.username = token.username;
 
