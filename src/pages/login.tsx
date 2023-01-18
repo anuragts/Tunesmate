@@ -1,5 +1,5 @@
 import { getProviders, signIn } from "next-auth/react";
-// import { prisma } from "../db/client";
+import { prisma } from "../db/client";
 function login({ providers }: { providers: any }) {
   return (
     <>
@@ -23,9 +23,9 @@ export default login;
 
 export async function getServerSideProps() {
   const providers = await getProviders();
-  // const exists : any = await prisma.user.findMany({
-  //   where:{email : providers?.email?.id},
-  // });
+  const exists : any = await prisma.user.findMany({
+    where:{email : providers?.email?.id},
+  });
   return {
     props: {
       providers,
