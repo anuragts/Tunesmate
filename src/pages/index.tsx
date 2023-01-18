@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
 import { signOut , useSession } from 'next-auth/react'
+import Header from './components/Header'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,6 +20,7 @@ export default function Home() {
       </Head>
      <main>
       <div>
+        <Header/>
         <button onClick={() =>{
           signOut()
         }}>
