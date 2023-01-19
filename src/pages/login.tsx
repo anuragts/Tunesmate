@@ -23,9 +23,6 @@ export default login;
 
 export async function getServerSideProps() {
   const providers = await getProviders();
-  const exists : any = await prisma.user.findMany({
-    where:{email : providers?.email?.id},
-  });
   return {
     props: {
       providers,
