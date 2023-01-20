@@ -33,13 +33,16 @@ const top = () => {
       <div>
         <div className="text-center text-3xl font-semibold my-10">My top tracks</div>
         {loading ? (
-          <div>Loading...</div>
+          <div className="text-center text-2xl font-semibold">Loading...</div>
         ) : (
           <div>
             <div className="flex flex-row flex-wrap justify-center">
 
-            {data?.map((track: any) => (
-              <div className="mt-5" key={track.name}>
+            {data?.map((track: any,index:number) => (
+              <div className="mt-5" key={index+1}>
+                <div className="text-2xl">
+                {index + 1}.
+                </div>
                 <div className="text-white p-4 rounded-lg shadow-md">
                   <img
                     src={track.image_url}
