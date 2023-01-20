@@ -1,4 +1,3 @@
-// get user details using spotify api
 import { getToken } from "next-auth/jwt";
 
 import { NextApiRequest, NextApiResponse } from "next";
@@ -24,19 +23,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       image_url: item.album.images[0].url,
     };
   });
-  console.log(fdata[0].name);
+  let topTracks: any[] = []
   for (let i = 0; i < data.items.length; i++) {
-    console.log({
+    topTracks.push({
       name: fdata[i].name,
       url: data.items[i].external_urls.spotify,
       artist: data.items[i].album.artists[0].name,
-    //   image_url: data[i].images[0].url,
+      image_url: data.items[i].album.images[0].url,
     });
   }
-//   res.status(200).json({
-//     name: fdata[0].name,
-//     url: data.items[0].external_urls.spotify,
-//     artist: data.items[0].album.artists[0].name,
-//     image_url: fdata[0].image_url,
-//   });
+  return res.status(200).json(topTracks);
 };

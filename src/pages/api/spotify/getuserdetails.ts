@@ -16,7 +16,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     },
   });
   const data = await response.json();
-  res
+     res 
     .status(200)
     .json({
       name: data.display_name,
