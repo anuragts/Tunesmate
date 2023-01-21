@@ -5,6 +5,6 @@ import { NextApiRequest, NextApiResponse } from "next";
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const token = await getToken({ req });
   const access = token?.accessToken as string;
-  const topTracks = getTracks(access)  
+  const topTracks = await getTracks(access)  
   return res.status(200).json(topTracks);
 };
