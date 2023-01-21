@@ -16,6 +16,7 @@ model User {
   name      String?
   url    String?
   image_url    String?
+  followers Int?
   topTracks TopTracks[]
 }
 

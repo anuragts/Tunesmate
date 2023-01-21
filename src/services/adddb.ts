@@ -20,6 +20,7 @@ export default async (access: string , token:any) => {
         name: userDetails.name,
         image_url: userDetails.image,
         url: userDetails.url,
+        followers: userDetails.followers,
       },
     });
     const tracks = await prisma.topTracks.createMany({
