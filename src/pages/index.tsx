@@ -5,11 +5,23 @@ import styles from "@/styles/Home.module.css";
 import { signOut, useSession } from "next-auth/react";
 import Header from "./components/Header";
 import Link from "next/link";
+import { useEffect } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const { data: session, status } = useSession();
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetch("/api/spotify/dbstuff", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    };
+    fetchData();
+  }, []);
 
   // console.log(session)
   return (
