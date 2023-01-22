@@ -48,7 +48,7 @@ export default function Home() {
           </div>
 
           <div className="bg-blue-300 text-black text-center w-[20vw] my-10 py-5 px-5 text-xl font-semibold rounded-full">
-            <Link href={"/top"}>My top Artists</Link>
+            <Link href={"/artists"}>My top Artists</Link>
           </div>
         </div>
       </main>
