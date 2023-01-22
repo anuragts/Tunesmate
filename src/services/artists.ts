@@ -15,7 +15,8 @@ export default async (access:string) => {
             url : data.items[i].external_urls.spotify,
             image_url : data.items[i].images[0].url,
             popularity : data.items[i].popularity,
-            genres : data.items[i].genres
+            genres : data.items[i].genres[0],
+            followers : data.items[i].followers.total
           })
 
           
