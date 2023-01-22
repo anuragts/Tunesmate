@@ -23,7 +23,6 @@ export default function Home() {
     fetchData();
   }, []);
 
-  // console.log(session)
   return (
     <>
       <Head>

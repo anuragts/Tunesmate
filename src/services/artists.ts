@@ -8,5 +8,18 @@ export default async (access:string) => {
       });
       const data = await response.json();
 
-      return data;
+      let artists: any[] = []
+      for (let i = 0 ; i < data.items.length; i++){
+          artists.push({
+            name : data.items[i].name,
+            url : data.items[i].external_urls.spotify,
+            image_url : data.items[i].images[0].url,
+            popularity : data.items[i].popularity,
+            genres : data.items[i].genres
+          })
+
+          
+        }
+        return artists;
+
 }

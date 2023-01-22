@@ -7,7 +7,6 @@ export default async (access:string) => {
     },
   });
   const data = await response.json();
-  //   res.status(200).json(data);
   const fdata: any = data.items.filter(function (item: any) {
     return {
       name: item.name,
