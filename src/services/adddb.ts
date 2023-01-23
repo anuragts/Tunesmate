@@ -1,10 +1,11 @@
-import { getToken } from "next-auth/jwt";
 import { prisma } from "../db/client";
 import getTracks from "./tracks";
+import getArtists from "./artists";
 import userd from "./user";
 
 export default async (access: string , token:any) => {
   const topTracks = await getTracks(access);
+  const topArtists = await getArtists(access);
   const userDetails = await userd(access);
   const user = await prisma.user.findUnique({
     where: {
@@ -29,6 +30,12 @@ export default async (access: string , token:any) => {
         userId: a.id,
       })),
     });
-    return ({ user: a, tracks: tracks });
+    const artists = await prisma.topArtists.createMany({
+      data :topArtists.map((artist) => ({
+        ...artist,
+        userId: a.id,
+      }))
+    })
+    return ({ user: a, tracks: tracks , artists: artists });
   }
 };

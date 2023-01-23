@@ -18,6 +18,7 @@ model User {
   image_url    String?
   followers Int?
   topTracks TopTracks[]
+  topArtists TopArtists[]
 }
 
 model TopTracks{
@@ -26,6 +27,18 @@ model TopTracks{
   url     String?
   artist    String?
   image_url     String?
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+}
+
+model TopArtists{
+  id        Int      @default(autoincrement()) @id
+  name      String?
+  url     String?
+  image_url     String?
+  genres String?
+  popularity Int? 
+  followers Int?
   user      User     @relation(fields: [userId], references: [id])
   userId    Int
 }

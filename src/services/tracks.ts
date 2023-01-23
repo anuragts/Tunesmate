@@ -7,7 +7,7 @@ export default async (access:string) => {
     },
   });
   const data = await response.json();
-  const fdata: any = data.items.filter(function (item: any) {
+  const fdata: any = data?.items.filter(function (item: any) {
     return {
       name: item.name,
       url: item.external_urls.spotify,
